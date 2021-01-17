@@ -211,7 +211,7 @@ def playCard(card):
 #transition of players' turns and so the next player can start their turn
 def showNext():
 	nextbut.config(text = playernames[counterturn] + ", please click to take your turn.") 
-	nextbut.pack() 
+	nextbut.pack(side = TOP) 
 
 # runs when next button is clicked
 def nextTurn(): 
@@ -252,7 +252,7 @@ def refreshInformation():
 		if i == counterturn: # if it is the player's turn
 			infolist[i].config(text = playernames[i] + " , now it's your turn!")
 		else: #  if it isn't the player's turn then show how many cards left in hand
-			infolist[i].config(text = playernames[i] + " cards in hand:" + str(len(playerhands[i].cards)))
+			infolist[i].config(text = playernames[i] + " Player cards in hand:" + str(len(playerhands[i].cards)))
 	infolist[4].pack_forget() # remove the draw pile label
 	infolist[4].config(text = "Cards left in draw pile: " + str(len(drawpile.cards))) # refresh the draw pile display
 	for i in range(len(playernames)): # add the number of cards in the the other playerhand
@@ -307,27 +307,27 @@ information.pack()
 leftbox = Frame(window, width = 64, height = 300, bg = "burlywood4") # box for left arrow
 leftbox.pack_propagate(0)
 leftbox.pack(side=LEFT)
-area_toplay = Frame(window, width = 620, height = 300, bg = "burlywood4") # create area of the game to play with the cards
+area_toplay = Frame(window, width = 650, height = 300, bg = "burlywood4") # create area of the game to play with the cards
 area_toplay.pack_propagate(0)
 area_toplay.pack(side=LEFT)
 rightbox = Frame(window, width = 64, height = 300, bg = "burlywood4") # box for right arrow
 rightbox.pack_propagate(0)
 rightbox.pack(side=LEFT)
-butbox = Frame(window, width = 128, height = 300, bg =  "burlywood4") #box for button 
+butbox = Frame(window, width = 130, height = 300, bg =  "burlywood4") #box for button 
 butbox.pack_propagate(0)
 butbox.pack(side=LEFT)
-discardbox = Frame(window, width = 124, height = 300, bg =  "burlywood4") # box for top of discard pile
+discardbox = Frame(window, width = 125, height = 300, bg =  "burlywood4") # box for top of discard pile
 discardbox.pack_propagate(0)
-discardbox.pack(side=LEFT)
+discardbox.pack(side=LEFT) 
 winbox = Frame(window, width = 1000, height = 350) # box when a player wins. Gets packed at the end
 
 # Creating labels & buttons
 topcard = Label(discardbox) # displays image of top of discard pile
 discardlabel = Label(discardbox, text = "Game Discard Pile ", bg = "black", fg = "burlywood2", width = 18, height = 3) # Shows that this card is the discard pile
 winlabel = Label(winbox, font=("Courier", 60))
-drawbut = Button(butbox, text = "Draw Card", command = drawCard)
+drawbut = Button(butbox, text = "Draw Card", command = drawCard, width = 10, height = 2 )
 endbut = Button(butbox, text = "End Turn", command = endButton)
-nextbut = Button(area_toplay, text = "Next Player, please click this button to begin your turn.", command = nextButton)
+nextbut = Button(area_toplay, text = "Next Player, please click this button to begin your turn.", width = 30, height = 3, command = nextButton)
 leftimage = PhotoImage(file="leftarrow1.png")
 leftbut = Button(leftbox, image = leftimage, command = leftArrow)
 rightimage = PhotoImage(file="rightarrow1.png")
@@ -342,8 +342,8 @@ direction = 1 # direction flow of the game but can be reversed with a special ca
 counterturn = 0 # corresponds to the index of the player whose turn it is
 pagenum = 0 #determines which page of hards in the player's hand gets displayed
 infolist = [Label(information, bg = "antique white"), Label(information, bg = "lightblue"), Label(information, bg = "thistle"),Label(information, bg = "LightPink2"),Label(information)] 
-unocolours = [Button(butbox, bg='red', height = 1, width = 6, command = redClick), Button(butbox,  bg='orange', height = 1, width = 6, command = yellowClick),Button(butbox,  bg='green',  height = 1, width = 6, command = greenClick),Button(butbox, bg='blue',  height = 1, width = 6, command = blueClick)]
-colorinstructions = Label(area_toplay, text = "Choose a color you would like your wild card to be.", bg = "burlywood4", fg = "black")
+unocolours = [Button(butbox, bg='red', height = 2, width = 10, command = redClick), Button(butbox,  bg='orange', height = 2, width = 10, command = yellowClick),Button(butbox,  bg='green',  height = 2, width = 10, command = greenClick),Button(butbox, bg='blue',  height = 2, width = 10, command = blueClick)]
+colorinstructions = Label(area_toplay, text = "Choose a color you would like your wild card to be.", bg = "burlywood4", fg = "black", font=("Helvetica", 12, "bold italic"))
 wildlabel = Label(discardbox, bg = "burlywood3")  # displays the color of wild card
 colorlist = ["red","yellow","green","blue"]  # used to convert color from numbers to strings
 playerselection = Listbox(area_toplay, selectmode = BROWSE, width =5, height=8) #this is the listbox for selecting the number of players
