@@ -14,7 +14,7 @@ User Manual is available on [Video Guide of UNO-TASTIC: ]().
 Pre-requisites:
 
 Visual Studio Code with the Python plugin, or any IDE of your preference to edit Python code.
-Cloning the repo. 
+Cloning the repo of https://github.com/ardeliaraminta/UNO-tastic
 
 Contributors:
 - Ardelia Araminta 
